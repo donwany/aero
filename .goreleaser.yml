@@ -30,6 +30,7 @@
 #    exclude:
 #      - '^docs:'
 #      - '^test:'
+#
 
 env:
   - GO111MODULE=on
@@ -40,7 +41,7 @@ before:
     - go mod download
 builds:
   - id: donwany-darwin-amd64
-    binary: ms
+    binary: aero
     env:
       - CGO_ENABLED=1
       - GO111MODULE=on
@@ -57,7 +58,7 @@ builds:
 brews:
   - github:
       owner: donwany
-      name: homebrew-donway
+      name: homebrew-aero
     folder: Formula
     homepage: https://github.com/donwany/aero
     description: A simple weather cli tool!
@@ -80,7 +81,7 @@ archives:
       freebsd: FreeBSD
       dragonfly: DragonFlyBSD
     files:
-      - Readme.MD
+      - README.md
       - LICENSE
 checksum:
   name_template: 'checksums.txt'

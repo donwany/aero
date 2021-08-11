@@ -9,4 +9,4 @@ RUN go get github.com/githubnemo/CompileDaemon
 
 EXPOSE 5000
 
-ENTRYPOINT CompileDaemon --build="go build ./server/main.go" --command=./main -log-prefix=false
+ENTRYPOINT CompileDaemon --build="go build ./main.go" --command=./main -log-prefix=false

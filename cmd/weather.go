@@ -26,7 +26,7 @@ import (
 )
 
 // Flags
-var apikey = "ef87d951c241d199580955e7e7478ed7"
+var apikey string
 var city string
 var zipcode string // api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
 
@@ -69,7 +69,7 @@ func init() {
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	//weatherCmd.PersistentFlags().StringVar(&apikey, "apikey", "a", "Enter your API-Key")
+	weatherCmd.PersistentFlags().StringVar(&apikey, "apikey", "a", "Enter your API-Key")
 
 	weatherCmd.PersistentFlags().StringVar(&city, "city", "c", "Enter your City eg. Dallas")
 
