@@ -1,6 +1,7 @@
 # aero
 
-```shell
+## 🚀 Getting Started
+```sh
 goreleaser init
 
 goreleaser --snapshot --skip-publish --rm-dist
