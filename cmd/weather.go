@@ -16,24 +16,50 @@ limitations under the License.
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
+	"strconv"
 
 	"github.com/spf13/cobra"
 )
 
+// Flags
+var apikey = "ef87d951c241d199580955e7e7478ed7"
+var city string
+var zipcode string // api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
+
+
 // weatherCmd represents the weather command
 var weatherCmd = &cobra.Command{
 	Use:   "weather",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Weather Checker",
+	Long: `Weather Checker CLI Application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("weather called")
+		var URL  = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apikey
+		weather(URL)
 	},
+
+}
+
+func weather(url string) {
+	response, err := http.Get(url)
+	if err != nil{
+		panic(err)
+	}
+	fmt.Println("Response Status: ", response.Status)
+	data, err := io.ReadAll(response.Body)
+	if err != nil{
+		panic(err)
+	}
+	_, jsondata := strconv.Atoi(string(data))
+	jsonResults, err := json.MarshalIndent(jsondata, "", " ")
+	if err != nil {
+		panic(err)
+	}
+	//os.Stdout.Write(jsonResults)
+	fmt.Printf(string(jsonResults))
 }
 
 func init() {
@@ -43,7 +69,9 @@ func init() {
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// weatherCmd.PersistentFlags().String("foo", "", "A help for foo")
+	//weatherCmd.PersistentFlags().StringVar(&apikey, "apikey", "a", "Enter your API-Key")
+
+	weatherCmd.PersistentFlags().StringVar(&city, "city", "c", "Enter your City eg. Dallas")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
