@@ -39,7 +39,9 @@ brews:
   - tap:
       owner: donwany
       name: homebrew-tap
-    name: kubepfm
+    name: aero
     homepage: "https://github.com/donwany/aero"
     description: "A simple weather CLI tool!"
     folder: Formula
+    install: |
+      bin.install "aero"
