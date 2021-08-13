@@ -22,6 +22,9 @@ brew install aero
 
 aero weather --city Dallas --apikey $APIKEY
 
+shasum -a 256 dist/aero_v0.1.1-next_Darwin_arm64.tar.gz 
+
+
 https://github.com/donwany/aero/blob/main/aero_v0.1.1-next_Darwin_arm64.tar.gz
 https://github.com/donwany/aero/blob/main/aero_v0.1.1-next_Linux_arm64.tar.gz
 
