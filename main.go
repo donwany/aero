@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "aerogramme.io/aero/cmd"
+import "github.com/donwany/aero/cmd"
 
 func main() {
 	cmd.Execute()

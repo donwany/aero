@@ -1,4 +1,4 @@
-module aerogramme.io/aero
+module github.com/donwany/aero
 
 go 1.16
 

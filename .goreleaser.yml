@@ -22,6 +22,7 @@ archives:
       amd64: x86_64
 checksum:
   name_template: 'checksums.txt'
+dist: /tmp/aero/dist
 snapshot:
   name_template: "{{ incpatch .Tag }}-next"
 changelog:
@@ -30,3 +31,15 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+release:
+  github:
+    owner: donwany
+    name: aero
+brews:
+  - tap:
+      owner: donwany
+      name: homebrew-tap
+    name: kubepfm
+    homepage: "https://github.com/donwany/aero"
+    description: "A simple weather CLI tool!"
+    folder: Formula
