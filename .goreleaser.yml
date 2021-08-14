@@ -45,3 +45,7 @@ brews:
     folder: Formula
     install: |
       bin.install "aero"
+    license: "MIT"
+    commit_author:
+      name: theophilus-siameh
+      email: theodondre@gmail.com
